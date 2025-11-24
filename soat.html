@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta to'liq="width=device-width, initial-scale=1.0">
+  <title>Dekorativ neon soat!</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      height: 100vh;
+      margin: 0;
+      font-family: 'Share Tech Mono', monospace;
+      color: #00f5ff;
+      background: linear-gradient(135deg, #0b0c1a, #1a0033, #001122, #002233);
+      background-size: 500% 500%;
+      animation: gradientFlow 22s ease infinite;
+      overflow: hidden;
+      position: relative;
+    }
+
+    @keyframes gradientFlow {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+@media (max-width: 600px) {
+  body {
+    font-size: 14px;
+    overflow-y: auto;
+  }
+
+  .container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .left, .right {
+    flex: none;
+    width: 100%;
+    padding: 20px;
+  }
+
+  .clock {
+    width: 280px;
+    height: 280px;
+    border-width: 16px;
+  }
+
+  .digital {
+    font-size: 36px;
+    bottom: 50px;
+  }
+
+  .right h1 {
+    font-size: 3rem;
+  }
+
+  .weather {
+    font-size: 2.2rem;
+  }
+
+  .temp {
+    font-size: 4rem;
+  }
+
+  .info {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .number {
+    font-size: 22px;
+  }
+
+  .hand.hour {
+    height: 80px;
+    width: 8px;
+    margin-left: -4px;
+  }
+
+  .hand.minute {
+    height: 110px;
+    width: 5px;
+    margin-left: -2.5px;
+  }
+
+  .hand.second {
+    height: 130px;
+    width: 1.5px;
+    margin-left: -0.75px;
+  }
+
+  .center {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  .digital {
+    font-size: 28px;
+    letter-spacing: 4px;
+    bottom: 40px;
+  }
+}
+    
+    /* QOR EFFEKTI */
+    .snow {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: white;
+      border-radius: 50%;
+      pointer-events: none;
+      box-shadow: 0 0 15px #fff, 0 0 30px #a0f5ff;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0%   { transform: translateY(-100vh) translateX(0); opacity: 1; }
+      100% { transform: translateY(100vh) translateX(100px); opacity: 0; }
+    }
+
+    .container { display: flex; height: 100vh; position: relative; z-index: 2; }
+
+    /* Qolgan stillar (soat, o‘ng bo‘lim) – avvalgidek */
+    .left { flex: 1; display: flex; justify-content: center; align-items: center; }
+    .right { flex: 1; padding: 60px; display: flex; flex-direction: column; justify-content: center; gap: 40px;
+             background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(12px); }
+
+    .right h1 { font-size: 4.5rem; text-shadow: 0 0 30px #00f5ff; }
+    .weather { font-size: 3.2rem; text-shadow: 0 0 20px #00f5ff; }
+    .temp { font-size: 5.5rem; color: #ff00c8; text-shadow: 0 0 30px #ff00c8; }
+
+    .clock { position: relative; width: 440px; height: 440px; border: 26px solid #00f5ff; border-radius: 50%;
+             background: radial-gradient(circle, #0c0c1a 0%, #000 70%);
+             box-shadow: 0 0 70px #00f5ff, 0 0 120px rgba(0,245,255,0.5); }
+
+    .number { position: absolute; width: 100%; height: 100%; text-align: center;
+              color: #00f5ff; font-size: 34px; font-weight: bold; text-shadow: 0 0 25px #00f5ff; }
+
+    .hand { position: absolute; bottom: 50%; left: 50%; transform-origin: bottom center; }
+    .hour   { width: 10px; height: 110px; background: linear-gradient(to top, transparent, #00f5ff); margin-left: -5px; box-shadow: 0 0 18px #00f5ff; border-radius: 6px; }
+    .minute { width: 6px; height: 150px; background: linear-gradient(to top, transparent, #00f5ff); margin-left: -3px; box-shadow: 0 0 22px #00f5ff; border-radius: 4px; }
+    .second { width: 2px; height: 165px; background: linear-gradient(to top, #ff00c8, #ff69f1); margin-left: -1px; box-shadow: 0 0 22px #ff00c8; border-radius: 2px; }
+
+    .center { position: absolute; top: 50%; left: 50%; width: 26px; height: 26px;
+              background: #00f5ff; border-radius: 50%; transform: translate(-50%, -50%);
+              box-shadow: 0 0 35px #00f5ff; z-index: 10; }
+
+    .digital {
+      position: absolute; bottom: 70px; left: 50%; transform: translateX(-50%);
+      font-size: 52px; font-weight: bold; letter-spacing: 8px;
+      background: linear-gradient(90deg, #ffffff, #ff00c8, #00f5ff);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 30px rgba(255, 0, 200, 0.6);
+    }
+
+    @media (max-width: 950px) {
+      .container { flex-direction: column; }
+      .right { text-align: center; padding: 40px; }
+      .clock { width: 340px; height: 340px; border-width: 20px; }
+      .digital { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Qor yaratish -->
+  <script>
+    // 80-120 ta qor parchasi (telefon uchun ham yetadi)
+    for(let i = 0; i < 100; i++) {
+      const snow = document.createElement('div');
+      snow.classList.add('snow');
+      snow.style.left = Math.random() * 100 + 'vw';
+      snow.style.width = snow.style.height = Math.random() * 8 + 4 + 'px';
+      snow.style.animationDuration = Math.random() * 12 + 8 + 's';
+      snow.style.animationDelay = Math.random() * 10 + 's';
+      snow.style.opacity = Math.random() * 0.7 + 0.3;
+      document.body.appendChild(snow);
+    }
+  </script>
+
+  <div class="container">
+
+    <!-- Soat -->
+    <div class="left">
+      <div class="clock">
+        <div class="number" style="transform: rotate(0deg)">   <span style="transform: rotate(0deg)">12</span></div>
+        <div class="number" style="transform: rotate(30deg)">  <span style="transform: rotate(-30deg)">1</span></div>
+        <div class="number" style="transform: rotate(60deg)">  <span style="transform: rotate(-60deg)">2</span></div>
+        <div class="number" style="transform: rotate(90deg)">  <span style="transform: rotate(-90deg)">3</span></div>
+        <div class="number" style="transform: rotate(120deg)"> <span style="transform: rotate(-120deg)">4</span></div>
+        <div class="number" style="transform: rotate(150deg)"> <span style="transform: rotate(-150deg)">5</span></div>
+        <div class="number" style="transform: rotate(180deg)"> <span style="transform: rotate(-180deg)">6</span></div>
+        <div class="number" style="transform: rotate(210deg)"> <span style="transform: rotate(-210deg)">7</span></div>
+        <div class="number" style="transform: rotate(240deg)"> <span style="transform: rotate(-240deg)">8</span></div>
+        <div class="number" style="transform: rotate(270deg)"> <span style="transform: rotate(-270deg)">9</span></div>
+        <div class="number" style="transform: rotate(300deg)"> <span style="transform: rotate(-300deg)">10</span></div>
+        <div class="number" style="transform: rotate(330deg)"> <span style="transform: rotate(-330deg)">11</span></div>
+
+        <div class="hand hour"   id="hour"></div>
+        <div class="hand minute" id="minute"></div>
+        <div class="hand second" id="second"></div>
+        <div class="center"></div>
+        <div class="digital" id="digital">00:00:00</div>
+      </div>
+    </div>
+
+    <!-- O‘ng bo‘lim + Yangi yil tilagi -->
+    <div class="right">
+      <h1>Yangi Yilingiz Muborak!</h1>
+
+      <div class="weather">
+        <div id="city">Toshkent</div>
+        <div class="temp" id="temp">--°C</div>
+        <div id="description">Yuklanmoqda...</div>
+      </div>
+
+      <div class="info">
+        <div>Bugun: <span id="date"></span></div>
+        <div>Hafta kuni: <span id="weekday"></span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Soat
+    const hourHand = document.getElementById('hour');
+    const minuteHand = document.getElementById('minute');
+    const secondHand = document.getElementById('second');
+    const digital = document.getElementById('digital');
+    const dateEl = document.getElementById('date');
+    const weekdayEl = document.getElementById('weekday');
+
+    const weekdays = ['Yakshanba','Dushanba','Seshanba','Chorshanba','Payshanba','Juma','Shanba'];
+    const months = ['Yanvar','Fevral','Mart','Aprel','May','Iyun','Iyul','Avgust','Sentabr','Oktabr','Noyabr','Dekabr'];
+
+    function updateClock() {
+      const n = new Date();
+      const h = n.getHours(), m = n.getMinutes(), s = n.getSeconds();
+
+      secondHand.style.transform = `translateX(-50%) rotate(${s*6}deg)`;
+      minuteHand.style.transform = `translateX(-50%) rotate(${m*6 + s*0.1}deg)`;
+      hourHand.style.transform   = `translateX(-50%) rotate(${(h%12)*30 + m*0.5}deg)`;
+
+      digital.textContent = `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+      dateEl.textContent = `${n.getDate()} ${months[n.getMonth()]} ${n.getFullYear()}`;
+      weekdayEl.textContent = weekdays[n.getDay()];
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // Ob-havo
+    async function getWeather() {
+      try {
+        const res = await fetch('https://wttr.in/Tashkent?format=%t+%c+%C');
+        const text = await res.text();
+        const [temp, icon, desc] = text.trim().split(' ');
+        document.getElementById('temp').textContent = temp;
+        document.getElementById('description').innerHTML = `${icon} ${desc}`;
+      } catch {
+        document.getElementById('description').textContent = 'Internet yo‘q';
+      }
+    }
+    getWeather();
+    setInterval(getWeather, 600000);
+  </script>
+</body>
+</html>
